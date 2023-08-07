@@ -18,5 +18,20 @@ namespace cat_mash_api.Database.Shared.EntityModels
         { 
             Votes = new List<Vote>();
         }
+
+        public Cat(CatPOST cat)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            Random random = new Random();
+            Id = new string(Enumerable.Repeat(chars, 10)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+
+            ImageUrl = cat.ImageUrl;
+        }
+
+        public void Update (CatPUT cat)
+        {
+            ImageUrl = cat.ImageUrl ?? ImageUrl;
+        }
     }
 }

@@ -5,6 +5,6 @@ namespace cat_mash_api.Domain.Models.Requests.Cats
     public class CatPOST
     {
         [Required]
-        public string ImageName { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

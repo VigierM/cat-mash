@@ -10,7 +10,7 @@ using cat_mash_api.Database;
 namespace cat_mash_api.Database.Migrations
 {
     [DbContext(typeof(CatMashDbContext))]
-    [Migration("20230807211700_InitialCreate")]
+    [Migration("20230807230327_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -470,7 +470,7 @@ namespace cat_mash_api.Database.Migrations
                         new
                         {
                             Id = "d5c",
-                            ImageUrl = "http://25.media.tumblr.com/tumblr_lidvsekFL91qzabkfo1_1280.jpg"
+                            ImageUrl = "http://25.media.tumblr.com/tumblr_lIdvsekFL91qzabkfo1_1280.jpg"
                         },
                         new
                         {

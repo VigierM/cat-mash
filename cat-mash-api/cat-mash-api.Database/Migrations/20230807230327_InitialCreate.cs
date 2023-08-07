@@ -132,7 +132,7 @@ namespace cat_mash_api.Database.Migrations
                     { "chk", "http://25.media.tumblr.com/tumblr_lpl0cy8o5R1qdth8zo1_1280.jpg" },
                     { "ck8", "http://24.media.tumblr.com/tumblr_lnvyrt5j1M1qce7tgo1_500.gif" },
                     { "ckc", "http://24.media.tumblr.com/tumblr_lnvz6gLbjS1qji0t2o1_500.jpg" },
-                    { "d5c", "http://25.media.tumblr.com/tumblr_lidvsekFL91qzabkfo1_1280.jpg" },
+                    { "d5c", "http://25.media.tumblr.com/tumblr_lIdvsekFL91qzabkfo1_1280.jpg" },
                     { "ddp", "http://25.media.tumblr.com/tumblr_m4gtikn86b1qztc0jo1_1280.jpg" },
                     { "di6", "http://25.media.tumblr.com/tumblr_m4rorb74ne1qkk65ko1_1280.jpg" },
                     { "dp", "http://28.media.tumblr.com/tumblr_ly7rtpsCSc1qgop81o1_1280.jpg" },

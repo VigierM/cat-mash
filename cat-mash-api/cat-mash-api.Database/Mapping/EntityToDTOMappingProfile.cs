@@ -9,7 +9,9 @@ namespace cat_mash_api.Database.Mapping
     {
         public EntityToDTOMappingProfile()
         {
-            CreateMap<Cat, CatDTO>().ReverseMap();
+            CreateMap<Cat, CatDTO>()
+                .ForMember(d => d.Votes, opt => opt.MapFrom(src => src.Votes.Count()))
+                .ReverseMap();
             CreateMap<PagedList<Cat>, PagedList<CatDTO>>();
         }
     }
