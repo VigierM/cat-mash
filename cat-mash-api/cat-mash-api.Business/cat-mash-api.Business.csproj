@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>cat_mash_api.Business</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\cat-mash-api.Database.Shared\cat-mash-api.Database.Shared.csproj" />
+    <ProjectReference Include="..\cat-mash-api.Domain\cat-mash-api.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
