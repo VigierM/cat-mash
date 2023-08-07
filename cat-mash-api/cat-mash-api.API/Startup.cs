@@ -63,7 +63,7 @@ namespace cat_mash_api
 
             services.Configure<AppSettingsSecret>(Configuration.GetSection("AppSettingsSecret"));
             var connectionString = Configuration.GetSection("AppSettingsSecret").Get<AppSettingsSecret>().ConnectionString;
-            // services.AddDbContext<CatMashDbContext>(options => options.UseNpgsql(connectionString));
+            services.AddDbContext<CatMashDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
             var mappingConfig = new MapperConfiguration(mc =>
             {
@@ -79,10 +79,10 @@ namespace cat_mash_api
             services.AddSwaggerGenService(Configuration);
         }
 
-        public void Configure(IApplicationBuilder app /*, CatMashDbContext context */)
+        public void Configure(IApplicationBuilder app, CatMashDbContext context)
         {
             // Database migrations
-            // context.Database.Migrate()
+            context.Database.Migrate();
 
             app.UseResponseCompression();
             app.UseRouting();

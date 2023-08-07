@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace cat_mash_api.Domain.Models
+﻿namespace cat_mash_api.Domain.Models
 {
-    public class PagedList
+    public class PagedList<T>
     {
+        public int CurrentPage { get; set; }
+
+        public int TotalCount { get; set; }
+
+        public List<T> Data { get; set; } = new List<T>();
+
+        public PagedList() { }
+
+        public PagedList(PagingParams paging) => CurrentPage = paging != null ? paging.PageNumber : 1;
     }
 }

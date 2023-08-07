@@ -1,6 +1,9 @@
 ﻿using cat_mash_api.Configuration.Constants;
+using cat_mash_api.Database;
+using cat_mash_api.Database.Shared.EntityModels;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using System.Text.Json;
 
 namespace cat_mash_api.Helpers
 {
@@ -67,7 +70,6 @@ namespace cat_mash_api.Helpers
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
-
         }
     }
 }

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace cat_mash_api.Domain.Models.DTOs
+﻿namespace cat_mash_api.Domain.Models.DTOs
 {
     public class CatDTO
     {
+        public string ImageUrl { get; set; }
+
+        public int Votes { get; set; }
     }
 }
