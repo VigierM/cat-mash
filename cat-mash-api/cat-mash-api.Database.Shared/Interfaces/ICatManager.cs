@@ -14,6 +14,9 @@ namespace cat_mash_api.Database.Shared.Interfaces
         Task<Cat> UpdateCatAsync(string catId, CatPUT cat);
         Task<bool> DeleteCatAsync(string id);
 
+        // Cat mashup
+        Task<PagedList<Cat>> GetCatMashupAsync();
+
         // Cat votes
         Task<bool> AttachCatVoteAsync(string id);
     }

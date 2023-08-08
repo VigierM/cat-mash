@@ -57,6 +57,16 @@ namespace cat_mash_api.Business.Business
         }
 
         /*
+         * Cat mashup
+        */
+        public async Task<PagedList<T>> GetCatMashupAsync<T>() where T : CatDTO
+        {
+            var catMashup = await _catManager.GetCatMashupAsync();
+
+            return _mapper.Map<PagedList<T>>(catMashup);
+        }
+
+        /*
          * Cat votes
         */
         public async Task<bool> PostCatVoteAsync(string id)

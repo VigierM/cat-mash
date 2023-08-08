@@ -114,6 +114,23 @@ namespace cat_mash_api.Database.Manager
         }
 
         /*
+         * Cat masup
+        */
+        public async Task<PagedList<Cat>> GetCatMashupAsync()
+        {
+            PagedList<Cat> cats = new PagedList<Cat>();
+
+            var query = _dbContext.Cats.OrderBy(c => EF.Functions.Random())
+                                        .Take(2);
+
+
+            cats.TotalCount = query.Count();
+            cats.Data = query.ToList();
+
+            return cats;
+        }
+
+        /*
          * Cat votes
         */
         public async Task<bool> AttachCatVoteAsync(string id)

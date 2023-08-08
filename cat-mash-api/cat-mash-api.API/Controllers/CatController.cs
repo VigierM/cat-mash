@@ -52,6 +52,12 @@ namespace cat_mash_api.Controllers
             return Ok(await _catBusiness.DeleteCatAsync(id));
         }
 
+        [HttpGet("mashup")]
+        public async Task<IActionResult> GetCatsMashupAsync()
+        {
+            return Ok(await _catBusiness.GetCatMashupAsync<CatDTO>());
+        }
+
         [HttpPost("{id}/votes")]
         public async Task<IActionResult> PostCatVoteAsync([FromRoute] string id)
         {

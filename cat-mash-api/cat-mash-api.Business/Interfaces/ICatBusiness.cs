@@ -19,6 +19,9 @@ namespace cat_mash_api.Business.Interfaces
 
         Task<bool> DeleteCatAsync(string id);
 
+        // Cat mashup
+        Task<PagedList<T>> GetCatMashupAsync<T>() where T : CatDTO;
+
         // Cat votes
         Task<bool> PostCatVoteAsync(string id);
     }
