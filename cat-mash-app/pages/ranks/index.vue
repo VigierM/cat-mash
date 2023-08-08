@@ -46,9 +46,10 @@
             </v-col>
         </v-row>
         <v-row justify="center">
+            {{ numberOfPages }}
             <v-pagination
                 v-model="currentPage"
-                :length="rankList.totalCount / 20"
+                :length="numberOfPages"
                 :total-visible="5"
             ></v-pagination>
         </v-row>
@@ -67,12 +68,14 @@ export default {
     data () {
         return {
             rankList: [],
-            currentPage: 1
+            currentPage: 1,
+            numberOfPages: 5
         }
     },
 
     watch: {
-        async page () {
+        async currentPage () {
+            console.log(this.currentPage)
             this.rankList = []
             await this.getRankList()
         }
@@ -91,6 +94,7 @@ export default {
                     sortOrder: 'DESC'
                 }
             })
+            this.numberOfPages = Math.ceil(this.rankList?.totalCount / 20)
         }
     }
 }
