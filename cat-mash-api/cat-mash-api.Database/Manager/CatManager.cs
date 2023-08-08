@@ -33,7 +33,7 @@ namespace cat_mash_api.Database.Manager
 
         public async Task<PagedList<Cat>> GetCatsListAsync(Filters filters, PagingParams paging, SortParams sort)
         {
-            PagedList<Cat> cats = new PagedList<Cat>();
+            PagedList<Cat> cats = new PagedList<Cat>(paging);
 
             var query = _dbContext.Cats.Include(c => c.Votes)
                                         .FilterCats(filters)
