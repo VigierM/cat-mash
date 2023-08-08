@@ -26,16 +26,20 @@
                             align="center"
                         >
                             <v-card-title>
-                                {{ '#' + (((page - 1) * 20) + (index + 1))}}
+                                {{ '#' + (((currentPage - 1) * 20) + (index + 1))}}
                             </v-card-title>
-                            <div>
-                                <CatPicture :source="cat.imageUrl" :size="300" />
-                            </div>
-                            <div>
-                                <h3>
-                                    Nombre de votes: {{ cat.votes }}
-                                </h3>
-                            </div>
+                            <v-card-text
+                                class="d-flex flex-column"
+                            >
+                                <div>
+                                    <CatPicture :source="cat.imageUrl" :size="275" />
+                                </div>
+                                <div class="justify-end">
+                                    <h3>
+                                        Nombre de votes: {{ cat.votes }}
+                                    </h3>
+                                </div>
+                            </v-card-text>
                         </v-card>
                     </v-layout>
                 </v-container>
@@ -43,7 +47,7 @@
         </v-row>
         <v-row justify="center">
             <v-pagination
-                v-model="page"
+                v-model="currentPage"
                 :length="rankList.totalCount / 20"
                 :total-visible="5"
             ></v-pagination>
@@ -63,7 +67,7 @@ export default {
     data () {
         return {
             rankList: [],
-            page: 1
+            currentPage: 1
         }
     },
 
@@ -82,7 +86,7 @@ export default {
         async getRankList () {
             this.rankList = await this.$api.$get(null, {
                 params: {
-                    pageNumber: this.page,
+                    pageNumber: this.currentPage,
                     sortColumnName: 'Votes',
                     sortOrder: 'DESC'
                 }
