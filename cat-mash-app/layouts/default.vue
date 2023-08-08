@@ -5,20 +5,42 @@
       fixed
       app
     >
-      <v-container fill-height>
+      <v-container fill-height fluid>
         <v-row justify="center" align="center">
+          <v-col class="d-flex">
+            <NuxtLink
+              class="pa-2"
+              to="/"
+            >
+              Mashup
+            </NuxtLink>
+            <NuxtLink
+              class="pa-2"
+              to="/ranks"
+            >
+              Ranks
+            </NuxtLink>
+          </v-col>
           <v-col>
             <h2 class="text-center">
               Cat Mash
             </h2>
           </v-col>
+          <v-col align="end">
+            <NuxtLink
+              class="pa-2"
+              to="/admin"
+            >
+              Cat administration
+            </NuxtLink>
+          </v-col>
         </v-row>
       </v-container>
     </v-app-bar>
     <v-main>
-      <div>
+      <v-container fill-height>
         <Nuxt />
-      </div>
+      </v-container>
     </v-main>
     <v-footer
       :absolute="!fixed"
