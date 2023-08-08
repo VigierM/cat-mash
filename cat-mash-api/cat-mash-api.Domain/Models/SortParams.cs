@@ -21,5 +21,23 @@
             SortColumnName = sortColumnName;
             SortOrder = sortOrder;
         }
+
+        public string GetSortExpression(List<string> authorizedSortFields)
+        {
+            var localSortOrder = SortOrder;
+            if (!AuthorizedOrder.Contains(localSortOrder.ToUpper()))
+            {
+                localSortOrder = "";
+            }
+
+            var localSortField = SortColumnName;
+            var localAuthorizedFields = authorizedSortFields.Select(f => f.ToUpper()).ToList();
+            if (!localAuthorizedFields.Contains(localSortField.ToUpper()))
+            {
+                localSortField = authorizedSortFields.First();
+            }
+
+            return $"{localSortField} {localSortOrder}";
+        }
     }
 }

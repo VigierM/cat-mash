@@ -19,6 +19,10 @@ namespace cat_mash_api.Business.Business
             _mapper = mapper;
         }
 
+        /*
+         * Cats
+        */
+
         public async Task<T> GetCatByIdAsync<T>(string id) where T : CatDTO
         {
             var cat = await _catManager.GetCatByIdAsync(id);
@@ -50,6 +54,14 @@ namespace cat_mash_api.Business.Business
         public async Task<bool> DeleteCatAsync(string id)
         {
             return await _catManager.DeleteCatAsync(id);
+        }
+
+        /*
+         * Cat votes
+        */
+        public async Task<bool> PostCatVoteAsync(string id)
+        {
+            return await _catManager.AttachCatVoteAsync(id);
         }
     }
 }

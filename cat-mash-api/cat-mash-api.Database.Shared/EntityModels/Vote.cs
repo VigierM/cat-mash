@@ -1,5 +1,4 @@
-﻿using cat_mash_api.Domain.Models.Requests.Votes;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace cat_mash_api.Database.Shared.EntityModels

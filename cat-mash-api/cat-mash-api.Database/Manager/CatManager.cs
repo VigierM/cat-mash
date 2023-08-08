@@ -20,9 +20,13 @@ namespace cat_mash_api.Database.Manager
             _logger = logger;
         }
 
+        /*
+         * Cats
+        */
         public async Task<Cat> GetCatByIdAsync(string id)
         {
-            var cat = _dbContext.Cats.FirstOrDefault(r => r.Id == id);
+            var cat = _dbContext.Cats.Include(c => c.Votes)
+                                        .FirstOrDefault(r => r.Id == id);
 
             return cat;
         }
@@ -31,7 +35,8 @@ namespace cat_mash_api.Database.Manager
         {
             PagedList<Cat> cats = new PagedList<Cat>();
 
-            var query = _dbContext.Cats.FilterCats(filters)
+            var query = _dbContext.Cats.Include(c => c.Votes)
+                                        .FilterCats(filters)
                                         .SortCats(sort);
 
 
@@ -106,6 +111,33 @@ namespace cat_mash_api.Database.Manager
             {
                 throw new Exception(string.Format("Failed to delete entity: '{0}'.", typeof(Cat)), ex);
             }
+        }
+
+        /*
+         * Cat votes
+        */
+        public async Task<bool> AttachCatVoteAsync(string id)
+        {
+            var catToVote = await _dbContext.Cats.FirstOrDefaultAsync(c => c.Id == id);
+            if (null == catToVote)
+            {
+                _logger.LogDebug(string.Format("No entity found to vote to for: '{0}'.", typeof(Cat)));
+                return false;
+            }
+
+            _logger.LogDebug(string.Format("Begin create entity: '{0}'.", typeof(Vote)));
+            await _dbContext.AddAsync(new Vote { CatId = catToVote.Id });
+
+            try
+            {
+                int num = await _dbContext.SaveChangesAsync();
+                _logger.LogDebug(string.Format("{0} row(s) created.", num));
+            }
+            catch (DbUpdateException ex)
+            {
+                throw new Exception(string.Format("Failed to create entity: '{0}'.", typeof(Cat)), ex);
+            }
+            return true;
         }
     }
 }

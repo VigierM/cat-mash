@@ -51,5 +51,11 @@ namespace cat_mash_api.Controllers
         {
             return Ok(await _catBusiness.DeleteCatAsync(id));
         }
+
+        [HttpPost("{id}/votes")]
+        public async Task<IActionResult> PostCatVoteAsync([FromRoute] string id)
+        {
+            return Ok(await _catBusiness.PostCatVoteAsync(id));
+        }
     }
 }

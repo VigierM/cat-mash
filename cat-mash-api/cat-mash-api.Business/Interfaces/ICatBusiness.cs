@@ -7,6 +7,7 @@ namespace cat_mash_api.Business.Interfaces
 {
     public interface ICatBusiness
     {
+        // Cats
         Task<T> GetCatByIdAsync<T>(string id) where T : CatDTO;
 
         Task<PagedList<T>> GetCatsListAsync<T>(PagingParams pagingParams,
@@ -17,5 +18,8 @@ namespace cat_mash_api.Business.Interfaces
         Task<T> UpdateCatAsync<T>(string id, CatPUT cat) where T : CatDTO;
 
         Task<bool> DeleteCatAsync(string id);
+
+        // Cat votes
+        Task<bool> PostCatVoteAsync(string id);
     }
 }
