@@ -18,7 +18,7 @@
               class="pa-2"
               to="/ranks"
             >
-              Ranks
+              Classement
             </NuxtLink>
           </v-col>
           <v-col>
@@ -31,7 +31,7 @@
               class="pa-2"
               to="/admin"
             >
-              Cat administration
+              Miaouh
             </NuxtLink>
           </v-col>
         </v-row>

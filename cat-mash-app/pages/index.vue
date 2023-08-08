@@ -54,8 +54,6 @@ export default {
         },
 
         async postCatVote (cat) {
-            console.log('Voting')
-            console.log(cat)
             const voted = await this.$api.$post(`${cat.id}/votes`)
             if (voted) {
                 this.getNewMashup()
